@@ -58,7 +58,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email should be downcase" do
-    assert @user.email == @user.email.downcase
+    new_email = "DeggQWE@dasdQWe.com"
+    @user.email = new_email
+    @user.save
+    assert_equal new_email.downcase, @user.reload.email
   end
 
   test "pass should have minimum length" do
