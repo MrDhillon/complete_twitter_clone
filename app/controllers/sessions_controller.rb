@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       #log user in and redirect to user show page
       log_in(user)
-      params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+      remember user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user_path(user)
     else
       #ceate error message
