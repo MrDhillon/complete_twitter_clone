@@ -11,3 +11,8 @@ dante:
   name: Dante Cristo
   email: dante@email.com
   password_digest:  <%= User.digest('password') %>
+
+archer:
+  name: archer sertling
+  email: secertspy@email.com
+  password_digest: <%= User.digest('password') $>
