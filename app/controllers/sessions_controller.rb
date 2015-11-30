@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
       log_in(@user)
       remember @user
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      redirect_to user_path(@user)
+      redirect_back_or user_path(@user)
     else
-      #ceate error message
-    flash.now[:danger] = "Invalid email/password"
-    render 'new'
+      #create error message
+      flash.now[:danger] = "Invalid email/password"
+      render 'new'
     end
   end
 
