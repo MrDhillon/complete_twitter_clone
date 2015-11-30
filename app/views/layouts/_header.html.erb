@@ -13,7 +13,7 @@
               </a>
               <ul class="dropdown-menu" data-toggle="dropdown">
                 <li><%= link_to "Profile", current_user, method: "get" %></li>
-                <li><%= link_to "Settings", '#' %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user), method: "get" %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Log out", logout_path, method: "delete" %></li>
               </ul>
