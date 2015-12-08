@@ -42,8 +42,7 @@ class User < ActiveRecord::Base
   end
   # activates and account//being called from account_activations controller
   def activate
-    self.update_attribute(:activated, true)
-    self.update_attribute(:activated_at, Time.zone.now)
+    self.update_columns(activated: true,activated_at: Time.zone.now)
   end
 
   # sends activation email
@@ -54,8 +53,7 @@ class User < ActiveRecord::Base
 
   def create_reset_digest
     self.reset_token = User.new_token
-    update_attribute(:reset_digest, User.digest(reset_token))
-    update_attribute(:reset_sent_at, Time.zone.now)
+    update_columns(reset_digest: User.digest(reset_token),reset_sent_at: Time.zone.now)
   end
 
   def send_password_reset_email
