@@ -15,3 +15,24 @@ most_recent:
   content: "Writing a short test"
   created_at: <%= Time.zone.now %>
   user: dante
+
+ants:
+  content: "do what you want ants? Becuase that's how you get ants!"
+  created_at: <%= 2.years.ago %>
+  user: archer
+
+zone:
+  content: "Danger zone!"
+  created_at: <%= 3.days.ago %>
+  user: archer
+
+tone:
+  content: "i'm sorry your words made sense, but you sarcastic tone did not..."
+  created_at: <%= 10.minutes.ago %>
+  user: lana
+
+can:
+  content: "Dude, this can's, like, rolling prabable cause"
+  created_at: <%= 4.hours.ago %>
+  user: lana
+
