@@ -2,12 +2,10 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "harman", email: "harman@email.com",
+    @user = User.new( name: "harman", email: "harman@email.com",
                       password: "123456", password_confirmation: "123456")
   end
-  # test "the truth" do
-  #   assert true
-  # end
+
   test "should be valid" do
     assert @user.valid?, "#{@user.inspect}"
   end
@@ -90,6 +88,24 @@ class UserTest < ActiveSupport::TestCase
     assert archer.followers.include?(micheal)
     micheal.unfollow(archer)
     assert_not micheal.following?(archer)  
+  end
+
+  test "feed should have the right posts" do
+    dante = users(:dante)
+    archer = users(:archer)
+    lana = users(:lana)
+    # post from followed user
+    lana.microposts.each do |post_following|
+      assert dante.feed.include?(post_following)
+    end
+    # post from self
+    dante.microposts.each do |post_self|
+      assert dante.feed.include?(post_self)
+    end
+
+    archer.microposts.each do |post_unfollowed|
+      assert_not dante.feed.include?(post_unfollowed)
+    end
   end
 
 end
